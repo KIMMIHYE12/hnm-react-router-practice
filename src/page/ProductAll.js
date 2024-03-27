@@ -11,7 +11,7 @@ const ProductAll = () => {
   };
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [productList]);
   return (
     <div>
       <ProductCard />
