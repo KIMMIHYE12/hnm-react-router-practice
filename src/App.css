@@ -3,7 +3,7 @@
 body {
   font-family: "NotoSansKR", sans-serif;
 }
-
+/*Navigation*/
 .header {
   padding: 16px 32px;
 }
@@ -13,6 +13,14 @@ body {
   justify-content: flex-end;
   align-items: center;
   font-size: 13px;
+}
+
+.btn_login {
+  display: flex;
+  align-items: center;
+  border: 0;
+  outline: 0;
+  background: none;
 }
 
 .ico_main {
@@ -28,10 +36,13 @@ body {
 
 .nav_container {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 2.5fr 1fr;
+  align-items: center;
 }
 
 .menu_list {
+  padding: 0;
+  margin: 0;
   display: flex;
   justify-content: center;
   list-style-type: none;
@@ -53,13 +64,14 @@ body {
 
 .search_bar button {
   position: absolute;
-  right: 220px;
+  right: 172px;
   padding: 0;
   width: 24px;
   height: 24px;
   border: 0;
   background: none;
 }
+
 .search_bar button img {
   width: 100%;
 }
@@ -69,4 +81,96 @@ body {
   padding: 8px 16px 8px 32px;
   border: 0;
   border-bottom: 1px solid #222;
+}
+
+/* Product All*/
+
+.product_item {
+  margin-bottom: 20px;
+}
+
+.product_item:hover {
+  transform: scale(1.04);
+  transition: all 0.3s ease-in-out;
+}
+
+.image_container {
+  position: relative;
+}
+
+.image_container img {
+  width: 100%;
+}
+
+.label_conscious {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translate(-50%, 50%);
+  font-size: 10px;
+  color: white;
+  background-color: #01a66d;
+}
+
+.none_conscious {
+  display: none;
+}
+
+.item_heading {
+  font-size: 13px;
+  margin-top: 22px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item_price {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.new_product {
+  font-size: 11px;
+  line-height: 20px;
+}
+
+/*Login Page*/
+
+.login_content {
+  padding-top: 6em;
+  background: #faf9f8;
+  height: 80vh;
+}
+
+.login_field {
+  justify-content: center;
+  align-items: center;
+}
+
+.login_field label {
+  font-size: 13px;
+}
+
+.login_field label::after {
+  content: " *";
+  color: #d6001c;
+}
+
+.login_field input {
+  border-radius: 0;
+}
+
+.btn_login_content {
+  display: flex;
+  justify-content: center;
+}
+
+.btn_login_content button {
+  margin-top: 32px;
+  width: 100%;
+  padding: 16px;
+  background: #222;
+  color: white;
+  border: 0;
 }

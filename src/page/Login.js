@@ -1,7 +1,49 @@
 import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 
 const Login = () => {
-  return <div>로그인페이지</div>;
+  const loginUser = (event) => {
+    event.preventDefault();
+    console.log("submit");
+  };
+
+  return (
+    <Container>
+      <Form className='login_content' onSubmit={(event) => loginUser(event)}>
+        <Form.Group
+          as={Row}
+          className='mb-3 login_field'
+          controlId='formPlaintextEmail'
+        >
+          <Form.Label column sm='1'>
+            이메일
+          </Form.Label>
+          <Col sm='3'>
+            <Form.Control type='email' placeholder='name@example.com' />
+          </Col>
+        </Form.Group>
+
+        <Form.Group
+          as={Row}
+          className='mb-3 login_field'
+          controlId='formPlaintextPassword'
+        >
+          <Form.Label column sm='1'>
+            비밀번호
+          </Form.Label>
+          <Col sm='3'>
+            <Form.Control type='password' placeholder='Password' />
+          </Col>
+        </Form.Group>
+        <Row className='btn_login_content'>
+          <Col sm='4'>
+            <button type='submit'>로그인</button>
+          </Col>
+        </Row>
+      </Form>
+    </Container>
+  );
 };
 
 export default Login;
