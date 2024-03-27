@@ -1,38 +1,72 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&display=swap");
+
+body {
+  font-family: "NotoSansKR", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  padding: 16px 32px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login_button {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
+  font-size: 13px;
+}
+
+.ico_main {
+  width: 24px;
+  margin-right: 8px;
+}
+
+.nav_section {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 32px;
 }
 
-.App-link {
-  color: #61dafb;
+.nav_container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu_list {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  font-weight: 600;
+  grid-column-start: 2;
+}
+
+.menu_list li {
+  padding: 0 8px;
+  margin: 0 8px;
+}
+
+.search_bar {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.search_bar button {
+  position: absolute;
+  right: 220px;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  background: none;
+}
+.search_bar button img {
+  width: 100%;
+}
+
+.search_bar input {
+  width: 200px;
+  padding: 8px 16px 8px 32px;
+  border: 0;
+  border-bottom: 1px solid #222;
 }
