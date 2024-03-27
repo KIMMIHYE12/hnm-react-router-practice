@@ -1,11 +1,14 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setAuthenticate }) => {
+  const navigate = useNavigate();
   const loginUser = (event) => {
     event.preventDefault();
-    console.log("submit");
+    setAuthenticate(true);
+    navigate("/");
   };
 
   return (
