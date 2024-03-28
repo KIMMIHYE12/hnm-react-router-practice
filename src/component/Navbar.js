@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -13,6 +13,21 @@ const Navbar = () => {
     "Sale",
     "지속가능성",
   ];
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 992);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 992);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleMenuToggle = () => {
+    setMenuOpen((prevMenuOpen) => !prevMenuOpen);
+  };
 
   const navigate = useNavigate();
   const goToLoginPage = () => {
@@ -21,32 +36,58 @@ const Navbar = () => {
 
   return (
     <div className='header'>
-      <div className='login_button'>
-        <button onClick={goToLoginPage} className='btn_login'>
-          <img
-            className='ico_main'
-            src='/images/ico_login.svg'
-            alt='로고인 아이콘'
-          />
-          <div>로그인</div>
-        </button>
-      </div>
-      <div className='nav_section'>
-        <img width={60} src='/images/logo.svg' alt='H&M 로고이미지' />
-      </div>
-      <div className='nav_container'>
-        <ul className='menu_list'>
-          {menuList.map((menu) => (
-            <li>{menu}</li>
-          ))}
-        </ul>
-        <div className='search_bar'>
-          <button>
-            <img src='/images/ico_search.svg' alt='돋보기 모양의 찾기 버튼' />
+      <nav className={isMobile ? "mobile-nav" : "desktop-nav"}>
+        <div className='login_button'>
+          <button onClick={goToLoginPage} className='btn_login'>
+            <img
+              className='ico_main'
+              src='/images/ico_login.svg'
+              alt='로고인 아이콘'
+            />
+            <div>로그인</div>
           </button>
-          <input type='text' />
         </div>
-      </div>
+        <div className='nav_section'>
+          <img width={60} src='/images/logo.svg' alt='H&M 로고이미지' />
+        </div>
+        {isMobile ? (
+          <div className='hamburger-menu' onClick={handleMenuToggle}>
+            ☰
+          </div>
+        ) : (
+          <div className='nav_container'>
+            <ul className='menu_list'>
+              {menuList.map((menu) => (
+                <li>{menu}</li>
+              ))}
+            </ul>
+            <div className='search_bar'>
+              <button>
+                <img
+                  src='/images/ico_search.svg'
+                  alt='돋보기 모양의 찾기 버튼'
+                />
+              </button>
+              <input type='text' />
+            </div>
+          </div>
+        )}
+      </nav>
+      {isMobile && menuOpen && (
+        <div className='nav_container nav_mb'>
+          <ul className='menu_list'>
+            {menuList.map((menu) => (
+              <li>{menu}</li>
+            ))}
+          </ul>
+          <div className='search_bar'>
+            <button>
+              <img src='/images/ico_search.svg' alt='돋보기 모양의 찾기 버튼' />
+            </button>
+            <input type='text' />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
