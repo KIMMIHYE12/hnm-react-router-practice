@@ -331,6 +331,45 @@ body {
     padding: 0;
   }
 }
+@media only screen and (max-width: 576px) {
+  .item_heading {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .item_price {
+    font-size: 1.2rem;
+    line-height: 1.25em;
+  }
+  .new_product {
+    font-size: 0.9rem;
+    line-height: 3em;
+  }
+
+  .product_detail_info h1 {
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  .label_conscious {
+    font-size: 0.9rem;
+  }
+  .product_detail_info {
+    padding: 36px 0;
+  }
+  .product_detail_info .price {
+    font-size: 1.25rem;
+  }
+
+  .product_detail_info .tit {
+    font-size: 1rem;
+  }
+
+  .btn_size button {
+    margin-top: 0;
+  }
+}
 
 @media only screen and (max-width: 365px) {
   .mobile_nav .search_bar {
