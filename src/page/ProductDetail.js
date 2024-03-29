@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
+  let { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const getProductDetail = async () => {
+    let url = `https://my-json-server.typicode.com/KIMMIHYE12/hnm-react-router-practice/products/${id}`;
+    let response = await fetch(url);
+    let data = await response.json();
+    setProduct(data);
+  };
+  useEffect(() => {
+    getProductDetail();
+  }, []);
   return (
     <Container>
       <Row className='product_content'>
         <Col lg={5} className='product_detail_images'>
-          <img
-            src='https://lp2.hm.com/hmgoepprod?set=source[/6d/87/6d87fdda0daf120760e12dc27fe12a7c7bfd8cfb.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[y],hmver[2]&call=url[file:/product/main]'
-            alt='상품이미지'
-          />
+          <img src={product?.img} alt={`상품이미지 ${product?.title}`} />
         </Col>
         <Col lg={5}>
           <div className='product_detail_info'>
-            <h1>피티드 웨이스트 셔츠 드레스</h1>
-            <div className='price'>₩ 79,900</div>
+            <h1>{product?.title}</h1>
+            <div className='price'>
+              {product?.price.toLocaleString("ko-KR")}
+            </div>
             <span className='conscious'>THE CONSCIOUS CHOICE</span>
             <span className='tit'>사이즈 선택</span>
             <Form.Select>

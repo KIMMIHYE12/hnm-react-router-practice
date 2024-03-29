@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ authenticate, setAuthenticate }) => {
   const menuList = [
     "Women",
     "Men",
@@ -15,6 +15,26 @@ const Navbar = () => {
   ];
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 992);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleMenuToggle = () => {
+    setMenuOpen((prevMenuOpen) => !prevMenuOpen);
+  };
+
+  const goToLoginPage = () => {
+    authenticate === true ? setAuthenticate(false) : navigate("/login");
+  };
+
+  const goToMainPage = () => {
+    navigate("/");
+  };
+
+  const search = (event) => {
+    if (event.key === "Enter") {
+      let keyword = event.target.value;
+      navigate(`/?q=${keyword}`);
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,15 +44,6 @@ const Navbar = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const handleMenuToggle = () => {
-    setMenuOpen((prevMenuOpen) => !prevMenuOpen);
-  };
-
-  const navigate = useNavigate();
-  const goToLoginPage = () => {
-    navigate("/login");
-  };
 
   return (
     <div className='header'>
@@ -44,11 +55,16 @@ const Navbar = () => {
               src='/images/ico_login.svg'
               alt='로고인 아이콘'
             />
-            <div>로그인</div>
+            <div>{authenticate === false ? "로그인" : "로그아웃"}</div>
           </button>
         </div>
         <div className='nav_section'>
-          <img width={60} src='/images/logo.svg' alt='H&M 로고이미지' />
+          <img
+            width={60}
+            src='/images/logo.svg'
+            onClick={goToMainPage}
+            alt='H&M 로고이미지'
+          />
         </div>
         {isMobile ? (
           <div className='hamburger-menu' onClick={handleMenuToggle}>
@@ -68,7 +84,7 @@ const Navbar = () => {
                   alt='돋보기 모양의 찾기 버튼'
                 />
               </button>
-              <input type='text' />
+              <input type='text' onKeyPress={(event) => search(event)} />
             </div>
           </div>
         )}
