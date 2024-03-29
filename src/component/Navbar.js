@@ -47,17 +47,34 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
 
   return (
     <div className='header'>
-      <nav className={isMobile ? "mobile-nav" : "desktop-nav"}>
-        <div className='login_button'>
-          <button onClick={goToLoginPage} className='btn_login'>
-            <img
-              className='ico_main'
-              src='/images/ico_login.svg'
-              alt='로고인 아이콘'
+      <nav className={isMobile ? "mobile_nav" : "desktop_nav"}>
+        <div className='top_menu'>
+          <div className='search_bar'>
+            <button>
+              <img src='/images/ico_search.svg' alt='돋보기 모양의 찾기 버튼' />
+            </button>
+            <input
+              type='text'
+              onKeyPress={(event) => search(event)}
+              placeholder='제품 검색'
             />
-            <div>{authenticate === false ? "로그인" : "로그아웃"}</div>
-          </button>
+          </div>
+          <div className='login_button'>
+            <button onClick={goToLoginPage} className='btn_login'>
+              <img
+                className='ico_main'
+                src={
+                  authenticate === false
+                    ? "/images/ico_login.svg"
+                    : "/images/ico_logout.svg"
+                }
+                alt='로고인 아이콘'
+              />
+              <div>{authenticate === false ? "로그인" : "로그아웃"}</div>
+            </button>
+          </div>
         </div>
+
         <div className='nav_section'>
           <img
             width={60}
@@ -67,8 +84,15 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           />
         </div>
         {isMobile ? (
-          <div className='hamburger-menu' onClick={handleMenuToggle}>
-            ☰
+          <div className='hamburger_menu' onClick={handleMenuToggle}>
+            <img
+              src={
+                menuOpen === true
+                  ? "/images/btn_menu_close.svg"
+                  : "/images/btn_menu_open.svg"
+              }
+              alt={menuOpen === true ? "메뉴닫기 버튼" : "메뉴열기 버튼"}
+            />
           </div>
         ) : (
           <div className='nav_container'>
@@ -77,15 +101,6 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
                 <li>{menu}</li>
               ))}
             </ul>
-            <div className='search_bar'>
-              <button>
-                <img
-                  src='/images/ico_search.svg'
-                  alt='돋보기 모양의 찾기 버튼'
-                />
-              </button>
-              <input type='text' onKeyPress={(event) => search(event)} />
-            </div>
           </div>
         )}
       </nav>
@@ -96,12 +111,6 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
               <li>{menu}</li>
             ))}
           </ul>
-          <div className='search_bar'>
-            <button>
-              <img src='/images/ico_search.svg' alt='돋보기 모양의 찾기 버튼' />
-            </button>
-            <input type='text' />
-          </div>
         </div>
       )}
     </div>
