@@ -13,7 +13,7 @@ const ProductDetail = () => {
   };
   useEffect(() => {
     getProductDetail();
-  }, []);
+  }, [product]);
   return (
     <Container>
       <Row className='product_content'>
