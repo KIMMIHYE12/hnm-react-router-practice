@@ -302,6 +302,23 @@ body {
   border: 0;
 }
 
+.btn_size {
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.btn_size button {
+  padding: 8px;
+  margin-right: 8px;
+  background: white;
+  border: 1px solid #222;
+  color: #222;
+}
+
+.btn_size button:last-child {
+  margin-right: 0;
+}
+
 /*반응형*/
 @media only screen and (min-width: 576px) and (max-width: 1200px) {
   .label_conscious {

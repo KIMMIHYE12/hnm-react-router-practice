@@ -29,12 +29,12 @@ const ProductDetail = () => {
               </div>
               <span className='conscious'>THE CONSCIOUS CHOICE</span>
               <span className='tit'>사이즈 선택</span>
-              <Form.Select>
-                <option>사이즈</option>
-                <option value='1'>S</option>
-                <option value='2'>M</option>
-                <option value='3'>L</option>
-              </Form.Select>
+              <div className='btn_size'>
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+              </div>
+
               <button>추가하기</button>
             </div>
           </Col>
