@@ -46,7 +46,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   }, []);
 
   return (
-    <div className='header'>
+    <div className={`header ${isMobile ? "fixed" : ""}`}>
       <nav className={isMobile ? "mobile_nav" : "desktop_nav"}>
         <div className='top_menu'>
           <div className='search_bar'>
@@ -74,35 +74,34 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
             </button>
           </div>
         </div>
-
-        <div className='nav_section'>
+        <div className='nav_content'>
           <img
             width={60}
             src='/images/logo.svg'
             onClick={goToMainPage}
             alt='H&M 로고이미지'
           />
+          {isMobile ? (
+            <div className='hamburger_menu' onClick={handleMenuToggle}>
+              <img
+                src={
+                  menuOpen === true
+                    ? "/images/btn_menu_close.svg"
+                    : "/images/btn_menu_open.svg"
+                }
+                alt={menuOpen === true ? "메뉴닫기 버튼" : "메뉴열기 버튼"}
+              />
+            </div>
+          ) : (
+            <div className='nav_container'>
+              <ul className='menu_list'>
+                {menuList.map((menu) => (
+                  <li>{menu}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
-        {isMobile ? (
-          <div className='hamburger_menu' onClick={handleMenuToggle}>
-            <img
-              src={
-                menuOpen === true
-                  ? "/images/btn_menu_close.svg"
-                  : "/images/btn_menu_open.svg"
-              }
-              alt={menuOpen === true ? "메뉴닫기 버튼" : "메뉴열기 버튼"}
-            />
-          </div>
-        ) : (
-          <div className='nav_container'>
-            <ul className='menu_list'>
-              {menuList.map((menu) => (
-                <li>{menu}</li>
-              ))}
-            </ul>
-          </div>
-        )}
       </nav>
       {isMobile && menuOpen && (
         <div className='nav_container nav_mb'>

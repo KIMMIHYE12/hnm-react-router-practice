@@ -5,7 +5,14 @@ body {
 }
 /*Navigation*/
 .header {
-  padding: 16px 32px 54px;
+  padding: 16px 32px;
+}
+
+.header.fixed {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  z-index: 2000;
 }
 
 .desktop_nav,
@@ -49,10 +56,23 @@ body {
   margin-right: 8px;
 }
 
-.nav_section {
+.nav_content {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.mobile_nav .nav_content {
+  flex-direction: row-reverse;
+}
+
+.nav_content img {
   margin-bottom: 32px;
+}
+
+.header.fixed .nav_content img {
+  margin: 0;
 }
 
 .nav_container {
@@ -86,6 +106,7 @@ body {
 }
 
 .mobile_nav .search_bar {
+  width: 120px;
   position: relative;
   display: flex;
   justify-content: flex-end;
@@ -94,7 +115,7 @@ body {
 
 .search_bar button {
   position: absolute;
-  right: 172px;
+  left: 0;
   padding: 0;
   width: 24px;
   height: 24px;
@@ -107,7 +128,7 @@ body {
 }
 
 .search_bar input {
-  width: 200px;
+  width: 100%;
   padding: 8px 16px 8px 32px;
   border: 0;
   border-bottom: 1px solid #222;
@@ -118,20 +139,32 @@ body {
 }
 
 /*mobile menu*/
+
+.nav_mb {
+  justify-content: flex-start;
+}
+
 .mobile_nav .hamburger_menu {
   width: 24px;
   height: 24px;
+  margin-right: 16px;
 }
 
 .nav_mb .menu_list {
+  padding: 32px 0;
   flex-direction: column;
+  align-items: flex-start;
 }
 
-.nav_mb
-
-
+.nav_mb .menu_list li {
+  margin: 8px 0;
+  padding: 4px 0;
+}
 
 /* Product All*/
+.content_wrap {
+  padding-top: 80px;
+}
 
 .product_item {
   margin-bottom: 20px;
@@ -270,8 +303,20 @@ body {
 }
 
 /*반응형*/
+@media only screen and (min-width: 576px) and (max-width: 1200px) {
+  .label_conscious {
+    text-align: center;
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   .menu_list li {
     padding: 0;
+  }
+}
+
+@media only screen and (max-width: 365px) {
+  .mobile_nav .search_bar {
+    width: 80px;
   }
 }

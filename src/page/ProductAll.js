@@ -17,11 +17,11 @@ const ProductAll = () => {
     getProducts();
   }, [query]);
   return (
-    <div>
+    <div className='content_wrap'>
       <Container>
         <Row>
           {productList.map((item) => (
-            <Col lg={3} md={4} xs={6}>
+            <Col lg={3} md={4} sm={6}>
               <ProductCard item={item} />
             </Col>
           ))}

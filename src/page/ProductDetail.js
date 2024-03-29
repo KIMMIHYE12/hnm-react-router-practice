@@ -15,30 +15,32 @@ const ProductDetail = () => {
     getProductDetail();
   }, []);
   return (
-    <Container>
-      <Row className='product_content'>
-        <Col lg={5} className='product_detail_images'>
-          <img src={product?.img} alt={`상품이미지 ${product?.title}`} />
-        </Col>
-        <Col lg={5}>
-          <div className='product_detail_info'>
-            <h1>{product?.title}</h1>
-            <div className='price'>
-              {product?.price.toLocaleString("ko-KR")}
+    <div className='content_wrap'>
+      <Container>
+        <Row className='product_content'>
+          <Col lg={5} className='product_detail_images'>
+            <img src={product?.img} alt={`상품이미지 ${product?.title}`} />
+          </Col>
+          <Col lg={5}>
+            <div className='product_detail_info'>
+              <h1>{product?.title}</h1>
+              <div className='price'>
+                {product?.price.toLocaleString("ko-KR")}
+              </div>
+              <span className='conscious'>THE CONSCIOUS CHOICE</span>
+              <span className='tit'>사이즈 선택</span>
+              <Form.Select>
+                <option>사이즈</option>
+                <option value='1'>S</option>
+                <option value='2'>M</option>
+                <option value='3'>L</option>
+              </Form.Select>
+              <button>추가하기</button>
             </div>
-            <span className='conscious'>THE CONSCIOUS CHOICE</span>
-            <span className='tit'>사이즈 선택</span>
-            <Form.Select>
-              <option>사이즈</option>
-              <option value='1'>S</option>
-              <option value='2'>M</option>
-              <option value='3'>L</option>
-            </Form.Select>
-            <button>추가하기</button>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 
