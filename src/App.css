@@ -330,7 +330,11 @@ body {
   .menu_list li {
     padding: 0;
   }
+  .desktop_nav .search_bar {
+    width: 160px;
+  }
 }
+
 @media only screen and (max-width: 576px) {
   .item_heading {
     font-size: 1.6rem;
