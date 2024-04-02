@@ -6,7 +6,8 @@ import { productAction } from "../redux/actions/productAction";
 
 const ProductDetail = () => {
   let { id } = useParams();
-  const product = useSelector((state) => state.product.selectItem);
+  const product = useSelector((state) => state.product.selectedItem);
+
   const dispatch = useDispatch();
   const getProductDetail = () => {
     dispatch(productAction.getProductDetail(id));
