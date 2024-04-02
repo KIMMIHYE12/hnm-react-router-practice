@@ -1,7 +1,16 @@
 function login(id, password) {
   return (dispatch, getState) => {
-    dispatch({ type: "LOGIN_SUCCESS", payload: { id, password } });
+    dispatch({
+      type: "LOGIN_SUCCESS",
+      payload: { id, password, authenticate: true },
+    });
   };
 }
 
-export const authenticateAction = { login };
+function changeLogin(id, password) {
+  return (dispatch, getState) => {
+    dispatch({ type: "LOGIN_SUCCESS", payload: { authenticate: false } });
+  };
+}
+
+export const authenticateAction = { login, changeLogin };

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { authenticateAction } from "../redux/actions/authenticateAction";
 
-const Navbar = ({ authenticate, setAuthenticate }) => {
+const Navbar = () => {
   const menuList = [
     "Women",
     "Men",
@@ -22,9 +23,19 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
     setMenuOpen((prevMenuOpen) => !prevMenuOpen);
   };
 
+  const authenticate = useSelector((state) => state.auth.authenticate);
+
+  const dispatch = useDispatch();
+
   const goToLoginPage = () => {
-    authenticate === true ? setAuthenticate(false) : navigate("/login");
+    authenticate === true
+      ? dispatch(authenticateAction.changeLogin())
+      : navigate("/login");
   };
+
+  // const goToLoginPage = () => {
+  //   authenticate === true ? setAuthenticate(false) : navigate("/login");
+  // };
 
   const goToMainPage = () => {
     navigate("/");

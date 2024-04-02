@@ -13,7 +13,7 @@ function authenticateReducer(state = initialState, action) {
         ...state,
         id: payload.id,
         password: payload.password,
-        authenticate: true,
+        authenticate: payload.authenticate,
       };
     default:
       return { ...state };
