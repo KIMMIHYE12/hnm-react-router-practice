@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { authenticateAction } from "../redux/actions/authenticateAction";
 
 const Login = ({ setAuthenticate }) => {
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const loginUser = (event) => {
     event.preventDefault();
-    setAuthenticate(true);
+    dispatch(authenticateAction.login(id, password));
     navigate("/");
   };
 
@@ -23,7 +28,11 @@ const Login = ({ setAuthenticate }) => {
             이메일
           </Form.Label>
           <Col md='4' sm='6'>
-            <Form.Control type='email' placeholder='name@example.com' />
+            <Form.Control
+              type='email'
+              placeholder='name@example.com'
+              onChange={(event) => setId(event.target.value)}
+            />
           </Col>
         </Form.Group>
 
@@ -36,7 +45,11 @@ const Login = ({ setAuthenticate }) => {
             비밀번호
           </Form.Label>
           <Col md='4' sm='6'>
-            <Form.Control type='password' placeholder='Password' />
+            <Form.Control
+              type='password'
+              placeholder='Password'
+              onChange={(event) => setPassword(event.target.value)}
+            />
           </Col>
         </Form.Group>
         <Row className='btn_login_content'>
