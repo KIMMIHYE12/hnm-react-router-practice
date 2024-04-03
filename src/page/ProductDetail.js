@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { productAction } from "../redux/actions/productAction";
+import { fetchProductDetail } from "../redux/reducers/productSlice";
 
 const ProductDetail = () => {
   let { id } = useParams();
@@ -10,7 +10,7 @@ const ProductDetail = () => {
 
   const dispatch = useDispatch();
   const getProductDetail = () => {
-    dispatch(productAction.getProductDetail(id));
+    dispatch(fetchProductDetail(id));
   };
   useEffect(() => {
     getProductDetail();
